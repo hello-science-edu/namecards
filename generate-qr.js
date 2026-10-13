@@ -57,7 +57,7 @@ async function main() {
 
   console.log(`\nĐang tạo mã QR cho: ${url}`);
 
-  const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&margin=1&format=png&data=${encodeURIComponent(url)}`;
+  const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&margin=1&format=png&data=${encodeURIComponent(url)}`;
 
   https.get(apiUrl, (res) => {
     if (res.statusCode !== 200) {
@@ -69,7 +69,7 @@ async function main() {
     res.on('data', chunk => chunks.push(chunk));
     res.on('end', () => {
       const qrBuffer = Buffer.concat(chunks);
-      console.log(`✔ Đã tạo thành công ảnh QR (${qrBuffer.length} bytes, độ phân giải 1000x1000px).`);
+      console.log(`✔ Đã tạo thành công ảnh QR (${qrBuffer.length} bytes, độ phân giải 500x500px chuẩn danh thiếp).`);
 
       // 1. Lưu file ảnh PNG
       if (!outputPath) {
